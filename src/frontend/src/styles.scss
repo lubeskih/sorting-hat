@@ -1,1 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+ }
+body {font-family: monospace, "Helvetica Neue", sans-serif; }
+
+.wrapper {
+    margin: 25px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, [col] 1fr ) ;
+    // 
+    // grid-template-columns: repeat(3, minmax(min(15%, 180px), 1fr));
+    border: 2px solid blue;
+    grid-template-rows: repeat(2, [row] auto);
+    background-color: #fff;
+    color: #444;
+}
+
+.box {
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    border: 2px dashed red;
+}
+
+.box .box {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.container {
+    background-color: #444;
+    grid-column: col / span 2;
+    grid-row: row 2;
+
+    // pod
+    display: grid;
+    grid-template-columns: repeat(2, [col] minmax(0, 1fr));
+    grid-template-rows: repeat(2, [row] auto);
+    grid-gap: 10px;
+}
+
+.title {
+    grid-column: span 3;
+}
+
+.qblock {
+    grid-column: col / span 2;
+    grid-row: 1;
+    height: 550px;
+}
+
+.status {
+    grid-column: col 1;
+    grid-row: row 2;
+}
+
+.info {
+    grid-column: col 2;
+    grid-row: row 2;
+}
+
+.dtree {
+    grid-column: col 3;
+    grid-row: row 2;
+    background-color: cadetblue;
+}
+
+.title > h1 {
+    margin: 0px;
+}

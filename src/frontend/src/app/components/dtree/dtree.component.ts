@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-// import { BlogEntriesPageable } from 'src/app/model/blog-entry.interface';
-// import { BlogService } from 'src/app/services/blog-service/blog.service';
 
 @Component({
   selector: 'app-home',
