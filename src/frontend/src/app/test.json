@@ -1,0 +1,45 @@
+{
+    "survey": {
+        "PAGES": {
+            "forLunch": {
+                "route": "/lunch",
+                "questions:": [
+                    {
+                        "question": "Do you prefer Spaghetti or Soup?",
+                        "inputs": {
+                            "radio": [
+                                {
+                                    "value": "Dawn"
+                                },
+                                {
+                                    "value": "Morning"
+                                }
+                            ]
+                        },
+                        "dependsOnInput": null
+                    },
+                    {
+                        "question": "What kind of sauce do you like?",
+                        "inputs": {
+                            "check": [
+                                {
+                                    "value": "Sauce-1"
+                                },
+                                {
+                                    "value": "Sauce-2"
+                                }, 
+                                {
+                                    "value": "Sauce-3"
+                                }
+                            ]
+                        },
+                        "dependsOnInput": null
+                    }
+                ]
+            }
+        },
+        "forDessert": [
+            {}
+        ]
+    }
+}

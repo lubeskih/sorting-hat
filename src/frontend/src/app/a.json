@@ -1,0 +1,40 @@
+{
+    "userStates": {
+        "userSelectorMap": {
+            "384f6f70-4399-11ec-8265-a3b6c0e1aed8": {
+                "10BF6170-A95A-11EA-8BC8-C1F19CA64CBE": {
+                    "userID": "384f6f70-4399-11ec-8265-a3b6c0e1aed8",
+                    "selectorID": "10BF6170-A95A-11EA-8BC8-C1F19CA64CBE",
+                    "currentRequestID": "3ab10620-4399-11ec-b4d9-af8a10dd0cb9",
+                    "firstSeenTimestamp": 1636708589724
+                }
+            }
+        }
+    },
+    "requestData": {
+        "currentRequest": {
+            "384f6f70-4399-11ec-8265-a3b6c0e1aed8": "request-1636708590702"
+        },
+        "requests": {
+            "request-1636708590702": {
+                "localID": "request-1636708590702",
+                "id": "3ab10620-4399-11ec-b4d9-af8a10dd0cb9",
+                "creationTimestamp": 1636708590702,
+                "currentPageID": "9E465820-AA2A-11EA-97C6-A5B5DBFFEF17",
+                "doneDate": null,
+                "done": false
+            }
+        }
+    },
+    "answerData": {
+        "request-1636708590702": {
+            "17BF53D1-AA28-11EA-97C6-A5B5DBFFEF17": {
+                "60BBDE00-AA28-11EA-97C6-A5B5DBFFEF17": {
+                    "answerID": "60BBDE00-AA28-11EA-97C6-A5B5DBFFEF17",
+                    "creationTimestamp": 1636708593349,
+                    "modifiedTimestamp": 1636708593349,
+                    "value": true,
+                    "skipped": false
+                },
+                "75C3EE50-AA28-11EA-97C6-A5B5DBFFEF17": {
+                    "answerID": "75C3EE50-AA28-11EA-97C6-A5B5DBFFEF17"
