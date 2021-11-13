@@ -1,52 +1,77 @@
 {
-    data: {
-        user: {
+    users: [
+        {
             tempId: "AAAA_BBBB",
-            startedAt: 123145234534
-        },
-        surveyData: [
-            {
-                value: "Dawn or sunrise?",
-                answerChoice: "single",
-                answers: [
-                    {
-                        answerId: "aaa",
-                        value: "Dawn",
-                        selected: 0,
-                    },
-                    {
-                        answerId: "bbb",
-                        value: "Sunrise",
-                        selected: 1,
-                    }
-                ]
-            },
-            {
-                value: "Rock or rap?",
-                answerChoice: "single",
-                answers: [
-                    {
-                        answerId: "ccc",
-                        value: "Rock",
-                        selected: 0,
-                    },
-                    {
-                        answerId: "ddd",
-                        value: "Rap",
-                        selected: 0,
-                    }
-                ]
-            }
-        ]
-        surveyMatrix: [
-            {
-                answerId: "aaa",
-                score: [100, 0, 100, 0]
-            },
-            {
-                answerId: "bbb",
-                score: [25, 0, 50, 0]
-            }
-        ]
-    }
+            startedAt: 123145234534,
+            questionnaireId: "AAA",
+            currentQuestion: "BBBB",
+            answers: [
+                {
+                    answerId: "aaa",
+                    selected: 0,
+                },
+                {
+                    answerId: "bbb",
+                    selected: 0,
+                }
+            ]
+        }
+    ],
+    survey: [
+        {
+            questionnaire: "pottermore",
+            questionnaireId: "AAA",
+            surveyData: [
+                {
+                    questionId: "BBBB_CCCC",
+                    value: "Dawn or sunrise?",
+                    answerChoice: "single",
+                    answers: [
+                        {
+                            answerId: "aaa",
+                            value: "Dawn",
+                            nextQuestion: null,
+                        },
+                        {
+                            answerId: "bbb",
+                            value: "Sunrise",
+                            nextQuestion: null,
+                        }
+                    ]
+                },
+                {
+                    questionId: "CCCC_DDDD",
+                    value: "Rock or rap?",
+                    answerChoice: "single",
+                    answers: [
+                        {
+                            answerId: "ccc",
+                            value: "Rock",
+                            nextQuestion: null,
+                        },
+                        {
+                            answerId: "ddd",
+                            value: "Rap",
+                            nextQuestion: null,
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    matrix: [
+        {
+            questionnaireId: "BBB",
+            surveyMatrix: [
+                {
+                    answerId: "aaa",
+                    score: [100, 0, 100, 0]
+                },
+                {
+                    answerId: "bbb",
+                    score: [25, 0, 50, 0]
+                }
+            ]
+        }
+    ]
 }
