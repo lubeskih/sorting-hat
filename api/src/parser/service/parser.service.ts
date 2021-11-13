@@ -1,17 +1,17 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { SurveySchema } from 'src/common/types';
+import { Survey, Matrix } from 'src/common/types';
 import survey from "./survey.json";
 
 @Injectable()
 export class ParserService {
     private readonly logger = new Logger(ParserService.name);
 
-    private storeSurvey(surveySchema: SurveySchema) {
+    private storeSurvey(surveySchema: Survey) {
         this.logger.log("JSON STORED IN DB! :)))");
     }
 
     private parseSurvey() {
-        return SurveySchema.parse(survey);
+        return Survey.parse(survey);
     }
 
     parse() {
