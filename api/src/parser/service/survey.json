@@ -1,0 +1,30 @@
+{
+    "survey": {
+        "pages": [
+            {
+                "pageName": "Pottermore",
+                "route": "/pottermore",
+                "questions": [
+                    {
+                        "question": "Dawn or sunrise?",
+                        "inputs": [
+                            {
+                                "type": "RADIO",
+                                "value": "value of the radio"
+                            }
+                        ]
+                    },
+                    {
+                        "question": "River or grass?",
+                        "inputs": [
+                            {
+                                "type": "RADIO",
+                                "value": "value of the radio"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
