@@ -6,7 +6,7 @@ import survey from "./survey.json";
 export class ParserService {
     private readonly logger = new Logger(ParserService.name);
 
-    private storeSurvey() {
+    private storeSurvey(surveySchema: SurveySchema) {
         this.logger.log("JSON STORED IN DB! :)))");
     }
 
@@ -15,7 +15,7 @@ export class ParserService {
     }
 
     parse() {
-        this.parseSurvey();
-        this.storeSurvey();
+        const surveySchema = this.parseSurvey();
+        this.storeSurvey(surveySchema);
     }
 }
