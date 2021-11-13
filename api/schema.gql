@@ -1,0 +1,21 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Score {
+  answerId: String!
+  score: [Float!]!
+}
+
+type Query {
+  scores: [Score!]!
+}
+
+type Mutation {
+  createScore(input: CreateScoreInput!): Score!
+}
+
+input CreateScoreInput {
+  answerId: String!
+  score: [Float!]!
+}

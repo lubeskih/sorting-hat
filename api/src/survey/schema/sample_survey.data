@@ -1,0 +1,52 @@
+{
+    data: {
+        user: {
+            tempId: "AAAA_BBBB",
+            startedAt: 123145234534
+        },
+        surveyData: [
+            {
+                value: "Dawn or sunrise?",
+                answerChoice: "single",
+                answers: [
+                    {
+                        answerId: "aaa",
+                        value: "Dawn",
+                        selected: 0,
+                    },
+                    {
+                        answerId: "bbb",
+                        value: "Sunrise",
+                        selected: 1,
+                    }
+                ]
+            },
+            {
+                value: "Rock or rap?",
+                answerChoice: "single",
+                answers: [
+                    {
+                        answerId: "ccc",
+                        value: "Rock",
+                        selected: 0,
+                    },
+                    {
+                        answerId: "ddd",
+                        value: "Rap",
+                        selected: 0,
+                    }
+                ]
+            }
+        ]
+        surveyMatrix: [
+            {
+                answerId: "aaa",
+                score: [100, 0, 100, 0]
+            },
+            {
+                answerId: "bbb",
+                score: [25, 0, 50, 0]
+            }
+        ]
+    }
+}
