@@ -22,6 +22,7 @@ export type SurveyQuestion = z.infer<typeof SurveyQuestion>;
 export const Survey = z.object({
   surveyName: z.string(),
   surveyId: z.string(),
+  rootQuestionId: z.string(),
   questions: z.array(SurveyQuestion),
 });
 export type Survey = z.infer<typeof Survey>;
