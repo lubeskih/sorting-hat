@@ -15,7 +15,7 @@ export class ParserService {
     }
 
     parse() {
-        const surveySchema = this.parseSurvey();
-        this.storeSurvey(surveySchema);
+        // const surveySchema = this.parseSurvey();
+        // this.storeSurvey(surveySchema);
     }
 }

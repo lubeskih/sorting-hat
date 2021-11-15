@@ -7,8 +7,7 @@ import { SurveyModule } from './survey/survey.module';
 @Module({
   imports: [
     GraphQLModule.forRoot({
-      typePaths: ['./**/*.graphql'],
-      playground: true,
+      typePaths: ['./**/*.graphql']
     }),
     ParserModule,
     SurveyModule
