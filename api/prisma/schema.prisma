@@ -46,7 +46,6 @@ model Question {
   parentSurveyId Int // Survey#id (fk, exists in db)
 
   answers Answer[]
-
   usersLookingAtThisQuestions User[]
 }
 

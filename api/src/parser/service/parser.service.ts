@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Survey, Matrix } from 'src/common/types';
-import survey from "./survey.json";
+import survey from "./sample_survey.json";
 
 @Injectable()
 export class ParserService {
