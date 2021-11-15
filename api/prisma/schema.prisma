@@ -99,6 +99,7 @@ model User {
   
   survey Survey @relation(fields: [whichSurveyIsTaking], references: [id])
   whichSurveyIsTaking Int
+  isDone Boolean @default(false)
   
   currentQuestion Question @relation(fields: [currentQuestionId], references: [id])
   currentQuestionId Int
