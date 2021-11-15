@@ -73,15 +73,15 @@ export class UserAnswer {
 export abstract class IQuery {
     abstract allSurveys(): Survey[] | Promise<Survey[]>;
 
-    abstract oneSurvey(id: string): Nullable<Survey> | Promise<Nullable<Survey>>;
+    abstract singleSurvey(id: string): Nullable<Survey> | Promise<Nullable<Survey>>;
 
     abstract allQuestions(surveyId: string): Question[] | Promise<Question[]>;
 
-    abstract question(questionId: string): Nullable<Question> | Promise<Nullable<Question>>;
+    abstract singleQuestion(questionId: string): Nullable<Question> | Promise<Nullable<Question>>;
 
     abstract allAnswers(surveyId: string): Answer[] | Promise<Answer[]>;
 
-    abstract answer(answerId: string): Nullable<Answer> | Promise<Nullable<Answer>>;
+    abstract singleAnswer(answerId: string): Nullable<Answer> | Promise<Nullable<Answer>>;
 
     abstract user(userId: string): User | Promise<User>;
 }
