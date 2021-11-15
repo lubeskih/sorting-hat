@@ -1,9 +1,16 @@
-import { Resolver, Query, Args } from "@nestjs/graphql";
+import { Resolver, Query, Args, Mutation } from "@nestjs/graphql";
+import { CreateAnswer, CreateQuestion, CreateSurvey } from "src/graphql";
 import { SurveyService } from "./survey.service";
 
 @Resolver("Survey")
 export class SurveyResolvers {
     constructor(private readonly surveyService: SurveyService) {}
+    
+    // Survey
+    @Mutation("createNewSurvey")
+    async createNewSurvey(@Args('input') args: CreateSurvey) {
+        return this.surveyService.createNewSurvey(args);
+    }
 
     @Query("allSurveys")
     async allSurveys() {
@@ -13,6 +20,12 @@ export class SurveyResolvers {
     @Query("singleSurvey")
     async singleSurvey(@Args('id') args: string) {
         return this.surveyService.singleSurvey(args);
+    }
+
+    // Question
+    @Mutation("createNewQuestion")
+    async createNewQuestion(@Args('input') args: CreateQuestion) {
+        return this.surveyService.createNewQuestion(args);
     }
 
     @Query("allQuestions")
@@ -25,8 +38,14 @@ export class SurveyResolvers {
         return this.surveyService.singleQuestion(args);
     }
 
+    // Answers
+    @Mutation("createNewAnswer")
+    async createNewAnswer(@Args('input') args: CreateAnswer) {
+        return this.surveyService.createNewAnswer(args);
+    }
+
     @Query("allAnswers")
-    async allAnswers(@Args('surveyId') args: string) {
+    async allAnswers(@Args('questionId') args: string) {
         return this.surveyService.allAnswers(args);
     }
 

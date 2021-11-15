@@ -60,7 +60,7 @@ type UserAnswer {
 
 # INPUTS TYPES #
 ################
-input CreateNewUser {
+input CreateUser {
     whichSurveyIsTaking: String!
 }
 
@@ -73,6 +73,39 @@ input UserIsDoneWithSurvey {
     isDone: Boolean!
 }
 
+input CreateMatrix {
+    surveyTitle: String!
+}
+
+input CreateSurvey {
+    surveyTitle: String!
+    scoreMatrixId: ID!
+}
+
+input CreateQuestion {
+    value: String!
+    answerChoice: String!
+    parentSurveyId: ID!
+}
+
+input CreateAnswer {
+    value: String!
+    parentQuestionId: ID!
+    nextQuestionId: ID!
+}
+
+input CreateAnswerScore {
+    scoreArray: String!
+    matrixId: ID! 
+    answerId: ID!
+}
+
+input CreateUserAnswer {
+    selected: Boolean!
+    answerId: ID!
+    userId: ID!
+}
+
 # QUERIES #
 ###########
 type Query {
@@ -83,7 +116,7 @@ type Query {
     allQuestions(surveyId: ID!): [Question!]!
     singleQuestion(questionId: ID!): Question
 
-    allAnswers(surveyId: ID!): [Answer!]!
+    allAnswers(questionId: ID!): [Answer!]!
     singleAnswer(answerId: ID!): Answer
     
     # Score
@@ -96,7 +129,26 @@ type Query {
 # MUTATIONS #
 #############
 type Mutation {
-    createNewUser(input: CreateNewUser): User!
+    # Matrix
+    createNewMatrix(input: CreateMatrix): Matrix!
+
+    # Survey
+    createNewSurvey(input: CreateSurvey): Survey!
+
+    # Questions
+    createNewQuestion(input: CreateQuestion): Question!
+
+    # Answer
+    createNewAnswer(input: CreateAnswer): Question!
+
+    # Score
+    createNewAnswerScore(input: CreateAnswerScore): Score!
+
+    # User
+    createNewUser(input: CreateUser): User!
     selectAnswer(input: UpdateUserAnswer): UserAnswer!
     userIsDone(input: UserIsDoneWithSurvey): User!
+
+    # User - Answer
+    createNewUserAnswer(input: CreateUserAnswer): Answer!
 }

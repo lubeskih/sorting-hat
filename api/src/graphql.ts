@@ -7,7 +7,7 @@
 
 /* tslint:disable */
 /* eslint-disable */
-export class CreateNewUser {
+export class CreateUser {
     whichSurveyIsTaking: string;
 }
 
@@ -18,6 +18,39 @@ export class UpdateUserAnswer {
 
 export class UserIsDoneWithSurvey {
     isDone: boolean;
+}
+
+export class CreateMatrix {
+    surveyTitle: string;
+}
+
+export class CreateSurvey {
+    surveyTitle: string;
+    scoreMatrixId: string;
+}
+
+export class CreateQuestion {
+    value: string;
+    answerChoice: string;
+    parentSurveyId: string;
+}
+
+export class CreateAnswer {
+    value: string;
+    parentQuestionId: string;
+    nextQuestionId: string;
+}
+
+export class CreateAnswerScore {
+    scoreArray: string;
+    matrixId: string;
+    answerId: string;
+}
+
+export class CreateUserAnswer {
+    selected: boolean;
+    answerId: string;
+    userId: string;
 }
 
 export class Survey {
@@ -79,7 +112,7 @@ export abstract class IQuery {
 
     abstract singleQuestion(questionId: string): Nullable<Question> | Promise<Nullable<Question>>;
 
-    abstract allAnswers(surveyId: string): Answer[] | Promise<Answer[]>;
+    abstract allAnswers(questionId: string): Answer[] | Promise<Answer[]>;
 
     abstract singleAnswer(answerId: string): Nullable<Answer> | Promise<Nullable<Answer>>;
 
@@ -87,11 +120,23 @@ export abstract class IQuery {
 }
 
 export abstract class IMutation {
-    abstract createNewUser(input?: Nullable<CreateNewUser>): User | Promise<User>;
+    abstract createNewMatrix(input?: Nullable<CreateMatrix>): Matrix | Promise<Matrix>;
+
+    abstract createNewSurvey(input?: Nullable<CreateSurvey>): Survey | Promise<Survey>;
+
+    abstract createNewQuestion(input?: Nullable<CreateQuestion>): Question | Promise<Question>;
+
+    abstract createNewAnswer(input?: Nullable<CreateAnswer>): Question | Promise<Question>;
+
+    abstract createNewAnswerScore(input?: Nullable<CreateAnswerScore>): Score | Promise<Score>;
+
+    abstract createNewUser(input?: Nullable<CreateUser>): User | Promise<User>;
 
     abstract selectAnswer(input?: Nullable<UpdateUserAnswer>): UserAnswer | Promise<UserAnswer>;
 
     abstract userIsDone(input?: Nullable<UserIsDoneWithSurvey>): User | Promise<User>;
+
+    abstract createNewUserAnswer(input?: Nullable<CreateUserAnswer>): Answer | Promise<Answer>;
 }
 
 type Nullable<T> = T | null;
