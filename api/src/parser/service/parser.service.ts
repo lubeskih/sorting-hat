@@ -1,31 +1,115 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Survey } from 'src/common/types';
+import { subscribe } from 'graphql';
+import { Matrix, PossibleSurveyAnswers, Survey, SurveyQuestion } from 'src/common/types';
+import { CreateAnswer, CreateAnswerScore, CreateMatrix, CreateQuestion, CreateSurvey } from 'src/graphql';
 import { MatrixService } from 'src/matrix/matrix.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { SurveyService } from 'src/survey/survey.service';
 import { UserService } from 'src/user/user.service';
-import survey from "./sample_survey.json";
+import * as hp_survey from "./hp_survey.json";
+
+// notes on how to seed; create in order
+// 1. matrix
+// 2. survey
+// 3. questions
+// 4. answers
+// 5. scores for answers
+// 6. User
+// 7. UserAnswer
 
 @Injectable()
 export class ParserService {
     constructor(
-        private prismaService: PrismaService,
         private surveyService: SurveyService,
         private matrixService: MatrixService,
-        private userService: UserService
+        private prisma: PrismaService
     ) {}
 
     private readonly logger = new Logger(ParserService.name);
 
-    private storeSurvey(surveySchema: Survey) {
-        this.logger.log("JSON STORED IN DB! :)))");
+    async parse() {
+        // validate
+        const matrix = Matrix.parse(hp_survey.matrix);
+        const survey = Survey.parse(hp_survey.survey);
+
+        // extract
+        let matrices: CreateMatrix[] = []; 
+        let scores: CreateAnswerScore[] = [];
+        let surveys: CreateSurvey[] = [];
+        let survey_questions: CreateQuestion[] = [];
+        let survey_question_answers: CreateAnswer[] = [];
+
+        matrix.forEach(matrix => {
+            const m: CreateMatrix = {
+                surveyTitle: matrix.surveyTitle
+            };
+
+            matrices.push(m);
+
+            matrix.surveyMatrix.forEach(score => {
+                const s: CreateAnswerScore = {
+                    answerId: score.answerId.toString(),
+                    matrixId: "1", // [TODO] HARDCODED
+                    scoreArray: score.score.toString()
+                }
+
+                scores.push(s);
+            })
+        });
+
+        survey.forEach(survey => {
+            const s: CreateSurvey = {
+                surveyTitle: survey.surveyTitle,
+                scoreMatrixId: survey.scoreMatrixId.toString()
+            }
+
+            surveys.push(s);
+
+            survey.questions.forEach(question => {
+                const q: CreateQuestion = {
+                    answerChoice: question.answerChoice,
+                    parentSurveyId: question.parentSurveyId.toString(),
+                    value: question.value,
+                }
+
+                survey_questions.push(q);
+
+                question.answers.forEach(answer => {
+                    const a: CreateAnswer = {
+                        nextQuestionId: answer.nextQuestionId.toString(),
+                        parentQuestionId: answer.parentQuestionId.toString(),
+                        value: answer.value,
+                    }
+
+                    survey_question_answers.push(a)
+                })
+            })
+        });
+
+        await this.storeMatrix(matrices);
+        await this.storeSurvey(surveys);
+        await this.storeQuestions(survey_questions);
+        await this.storeAnswers(survey_question_answers);
+        await this.storeAnswerScores(scores);
     }
 
-    private parseSurvey() {
-        return Survey.parse(survey);
+    async storeAnswerScores(scores: CreateAnswerScore[]) {
+        return Promise.all(scores.map(score => this.matrixService.createNewAnswerScore(score)));
     }
 
-    parse() {
-        
+    async storeAnswers(survey_question_answers: CreateAnswer[]) {
+        return Promise.all(survey_question_answers.map(sqa => this.surveyService.createNewAnswer(sqa)))
+    }
+    
+    async storeQuestions(survey_questions: CreateQuestion[]) {
+        return Promise.all(survey_questions.map(sq => this.surveyService.createNewQuestion(sq)))
+    }
+
+    async storeSurvey(surveys: CreateSurvey[]) {
+        return Promise.all(surveys.map(s => this.surveyService.createNewSurvey(s)))
+    }
+
+    async storeMatrix(matrices: CreateMatrix[]) {
+        return Promise.all(matrices.map(m => this.matrixService.createNewMatrix(m)));
     }
 }

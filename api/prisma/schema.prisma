@@ -7,15 +7,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// notes on how to seed; create in order
-// 1. matrix
-// 2. survey
-// 3. questions
-// 4. answers
-// 5. scores for answers
-// 6. User
-// 7. UserAnswer
-
 ////////////
 // Survey //
 ////////////
