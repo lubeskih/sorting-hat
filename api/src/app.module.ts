@@ -4,6 +4,7 @@ import { MatrixModule } from './matrix/matrix.module';
 
 import { ParserModule } from './parser/parser.module';
 import { SurveyModule } from './survey/survey.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { SurveyModule } from './survey/survey.module';
     }),
     ParserModule,
     SurveyModule,
-    MatrixModule
+    MatrixModule,
+    UserModule
   ],
 })
 export class AppModule {}

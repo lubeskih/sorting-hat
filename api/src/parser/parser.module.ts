@@ -1,13 +1,18 @@
 import { Module } from "@nestjs/common";
+import { MatrixService } from "src/matrix/matrix.service";
+import { PrismaService } from "src/prisma/prisma.service";
+import { SurveyService } from "src/survey/survey.service";
+import { UserService } from "src/user/user.service";
 import { ParserService } from "./service/parser.service"
-// import { TypeOrmModule } from '@nestjs/typeorm';
-// import { ParsedEntity } from './models/parsed.entity';
 
 @Module({
-    imports: [
-    //   TypeOrmModule.forFeature([ParsedEntity]),
-    ],
-    providers: [ParserService],
+    imports: [],
+    providers: [
+      ParserService,
+      UserService,
+      MatrixService,
+      SurveyService,
+      PrismaService],
     controllers: [],
     exports: [ParserService]
   })

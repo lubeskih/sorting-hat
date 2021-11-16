@@ -3,7 +3,7 @@
         {
             "tempId": "AAAA_BBBB",
             "startedAt": 123145234534,
-            "questionnaireId": "AAA",
+            "surveyId": "AAA",
             "currentQuestion": "BBBB",
             "answers": [
                 {
@@ -19,9 +19,8 @@
     ],
     "survey": [
         {
-            "questionnaire": "pottermore",
-            "questionnaireId": "AAA",
-            "rootQuestionId": "BBBB_CCCC",
+            "surveyTitle": "pottermore",
+            "surveryId": "AAA",
             "surveyData": [
                 {
                     "questionId": "BBBB_CCCC",

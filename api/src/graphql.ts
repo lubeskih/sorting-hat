@@ -9,6 +9,7 @@
 /* eslint-disable */
 export class CreateUser {
     whichSurveyIsTaking: string;
+    currentQuestionId: string;
 }
 
 export class UpdateUserAnswer {
@@ -47,9 +48,10 @@ export class CreateAnswerScore {
     answerId: string;
 }
 
-export class CreateUserAnswer {
+export class UpsertUserAnswer {
     selected: boolean;
     answerId: string;
+    questionId: string;
     userId: string;
 }
 
@@ -92,6 +94,7 @@ export class User {
     id: string;
     createdAt: string;
     whichSurveyIsTaking: string;
+    sessionToken: string;
     currentQuestionId: string;
     userAnswers?: Nullable<Nullable<UserAnswer>[]>;
 }
@@ -136,7 +139,7 @@ export abstract class IMutation {
 
     abstract userIsDone(input?: Nullable<UserIsDoneWithSurvey>): User | Promise<User>;
 
-    abstract createNewUserAnswer(input?: Nullable<CreateUserAnswer>): Answer | Promise<Answer>;
+    abstract createNewUserAnswer(input?: Nullable<UpsertUserAnswer>): Answer | Promise<Answer>;
 }
 
 type Nullable<T> = T | null;

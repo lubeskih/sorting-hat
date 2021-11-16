@@ -47,6 +47,7 @@ type User {
     id: ID!
     createdAt: String!
     whichSurveyIsTaking: ID!
+    sessionToken: String!
     currentQuestionId: ID!
     userAnswers: [UserAnswer]
 }
@@ -62,6 +63,7 @@ type UserAnswer {
 ################
 input CreateUser {
     whichSurveyIsTaking: String!
+    currentQuestionId: String!
 }
 
 input UpdateUserAnswer {
@@ -100,9 +102,10 @@ input CreateAnswerScore {
     answerId: ID!
 }
 
-input CreateUserAnswer {
+input UpsertUserAnswer {
     selected: Boolean!
     answerId: ID!
+    questionId: ID!
     userId: ID!
 }
 
@@ -150,5 +153,5 @@ type Mutation {
     userIsDone(input: UserIsDoneWithSurvey): User!
 
     # User - Answer
-    createNewUserAnswer(input: CreateUserAnswer): Answer!
+    createNewUserAnswer(input: UpsertUserAnswer): Answer!
 }

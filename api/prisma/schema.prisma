@@ -96,6 +96,7 @@ model Score {
 model User {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
+  sessionToken String
   
   survey Survey @relation(fields: [whichSurveyIsTaking], references: [id])
   whichSurveyIsTaking Int
@@ -116,4 +117,7 @@ model UserAnswer {
 
   user User @relation(fields: [userId], references: [id])
   userId Int
+
+  // no relations, yet
+  questionId Int
 }
