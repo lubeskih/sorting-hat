@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
 import { Matrix } from "@prisma/client";
 import { Score, CreateAnswerScore, CreateMatrix } from "src/graphql";
+import { stringToList } from "src/common/helpers";
 
 @Injectable()
 export class MatrixService {
@@ -22,5 +23,15 @@ export class MatrixService {
                 answerId: parseInt(input.answerId)
             }
         })
+    }
+
+    async getBias(matrixId: number) {
+        const matrix = await this.prisma.matrix.findUnique({
+            where: {
+                id: matrixId
+            }
+        });
+
+        return stringToList(matrix.bias);
     }
 }

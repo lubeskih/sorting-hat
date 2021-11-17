@@ -18,11 +18,13 @@ export class UpdateUserAnswer {
 }
 
 export class UserIsDoneWithSurvey {
+    userId: string;
     isDone: boolean;
 }
 
 export class CreateMatrix {
     surveyTitle: string;
+    bias: string;
 }
 
 export class CreateSurvey {
@@ -52,6 +54,10 @@ export class UpsertUserAnswer {
     selected: boolean;
     answerId: string;
     questionId: string;
+    userId: string;
+}
+
+export class GetDecision {
     userId: string;
 }
 
@@ -118,6 +124,8 @@ export abstract class IQuery {
     abstract allAnswers(questionId: string): Answer[] | Promise<Answer[]>;
 
     abstract singleAnswer(answerId: string): Nullable<Answer> | Promise<Nullable<Answer>>;
+
+    abstract getDecision(input?: Nullable<GetDecision>): Nullable<number>[] | Promise<Nullable<number>[]>;
 
     abstract user(userId: string): User | Promise<User>;
 }

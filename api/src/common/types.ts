@@ -39,6 +39,7 @@ export type AnswerWeight = z.infer<typeof AnswerWeight>
 export const Matrix = z.array(
   z.object({
     surveyTitle: z.string(),
+    bias: z.array(z.number()),
     surveyMatrix: z.array(AnswerWeight),
   })
 )

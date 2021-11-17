@@ -51,7 +51,8 @@ export class ParserService {
 
         matrix.forEach(matrix => {
             const m: CreateMatrix = {
-                surveyTitle: matrix.surveyTitle
+                surveyTitle: matrix.surveyTitle,
+                bias: matrix.bias.toString()
             };
 
             matrices.push(m);

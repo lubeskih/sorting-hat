@@ -72,11 +72,13 @@ input UpdateUserAnswer {
 }
 
 input UserIsDoneWithSurvey {
+    userId: String!
     isDone: Boolean!
 }
 
 input CreateMatrix {
     surveyTitle: String!
+    bias: String!
 }
 
 input CreateSurvey {
@@ -109,6 +111,10 @@ input UpsertUserAnswer {
     userId: ID!
 }
 
+input GetDecision {
+    userId: ID!
+}
+
 # QUERIES #
 ###########
 type Query {
@@ -123,7 +129,7 @@ type Query {
     singleAnswer(answerId: ID!): Answer
     
     # Score
-    # currentScore(userId: ID!):
+    getDecision(input: GetDecision): [Float]!
 
     # User
     user(userId: ID!): User!

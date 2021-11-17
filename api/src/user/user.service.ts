@@ -1,7 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
-import { CreateUser, UpsertUserAnswer } from "src/graphql";
+import { Answer, CreateUser, Score, UpsertUserAnswer, UserIsDoneWithSurvey } from "src/graphql";
 import { v4 as uuidv4 } from "uuid";
+import { stringToList } from "src/common/helpers";
 
 @Injectable()
 export class UserService {
@@ -39,5 +40,45 @@ export class UserService {
                 questionId: parseInt(input.questionId)
             }
         })
+    }
+
+    async userIsDoneWithSurvey(input: UserIsDoneWithSurvey){
+        await this.prisma.user.update({
+            where: {
+                id: parseInt(input.userId),
+            },
+            data: {
+                isDone: input.isDone
+            }
+        });
+
+        // [TODO] remove tokens, mokens..
+    }
+
+    async getUserBySessionToken(sessionToken: string) {
+        return this.prisma.user.findFirst({
+            where: {
+                sessionToken: sessionToken
+            }
+        })
+    }
+
+    async getUserAnswerScores(sessionToken: string) {
+        const user = await this.getUserBySessionToken(sessionToken);
+
+        const userAnswers = await this.prisma.userAnswer.findMany({
+            where: {
+                userId: user.id,
+            }
+        });
+        const answerIds = userAnswers.map(m => m.answerId);
+        // [ { ..., scoreArray: "100,0,100,0"}, ... ]
+        const scores = await this.prisma.score.findMany({
+            where: {
+                id: { in: answerIds }
+            }
+        });
+
+        return scores.map(s => stringToList(s.scoreArray)); // [ [ 100, 0, 100, 0 ], [ 0, 100, 0, 100 ] ]
     }
 }
