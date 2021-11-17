@@ -31,6 +31,7 @@ export type Survey = z.infer<typeof Survey>;
 // Matrix related
 export const AnswerWeight = z.object({
   answerId: z.number(),
+  matrixId: z.number(),
   score: z.array(z.number()),
 })
 export type AnswerWeight = z.infer<typeof AnswerWeight>

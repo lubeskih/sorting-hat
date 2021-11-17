@@ -1,11 +1,10 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { subscribe } from 'graphql';
-import { Matrix, PossibleSurveyAnswers, Survey, SurveyQuestion } from 'src/common/types';
+import { Matrix, Survey } from 'src/common/types';
 import { CreateAnswer, CreateAnswerScore, CreateMatrix, CreateQuestion, CreateSurvey } from 'src/graphql';
 import { MatrixService } from 'src/matrix/matrix.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { SurveyService } from 'src/survey/survey.service';
-import { UserService } from 'src/user/user.service';
+
 import * as hp_survey from "./hp_survey.json";
 
 // notes on how to seed; create in order
@@ -27,7 +26,18 @@ export class ParserService {
 
     private readonly logger = new Logger(ParserService.name);
 
-    async parse() {
+    async dbSeeded() {
+        return (await this.prisma.score.count() > 0);
+    }
+
+    async seed() {
+        this.logger.log("[+] Running a database seed.")
+
+        if (await this.dbSeeded()) {
+            this.logger.log("[+] Database already seeded.")
+            return;
+        }
+
         // validate
         const matrix = Matrix.parse(hp_survey.matrix);
         const survey = Survey.parse(hp_survey.survey);
@@ -49,7 +59,7 @@ export class ParserService {
             matrix.surveyMatrix.forEach(score => {
                 const s: CreateAnswerScore = {
                     answerId: score.answerId.toString(),
-                    matrixId: "1", // [TODO] HARDCODED
+                    matrixId: score.matrixId.toString(),
                     scoreArray: score.score.toString()
                 }
 
@@ -86,11 +96,22 @@ export class ParserService {
             })
         });
 
+        this.logger.log("[+] Seeding matrices.");
         await this.storeMatrix(matrices);
+
+        this.logger.log("[+] Seeding the surveys.");
         await this.storeSurvey(surveys);
+
+        this.logger.log("[+] Seeding the questions.");
         await this.storeQuestions(survey_questions);
+
+        this.logger.log("[+] Seeding the question answers.");
         await this.storeAnswers(survey_question_answers);
+
+        this.logger.log("[+] Seeding the scores.");
         await this.storeAnswerScores(scores);
+
+        this.logger.log("[+] Done.")
     }
 
     async storeAnswerScores(scores: CreateAnswerScore[]) {

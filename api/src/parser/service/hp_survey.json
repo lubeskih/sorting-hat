@@ -82,34 +82,42 @@
             "surveyMatrix": [
                 {
                     "answerId": 1,
+                    "matrixId": 1,
                     "score": [100, 100, 0, 0]
                 },
                 {
                     "answerId": 2,
+                    "matrixId": 1,
                     "score": [0, 0, 100, 100]
                 },
                 {
                     "answerId": 3,
+                    "matrixId": 1,
                     "score": [0, 0, 100, 50]
                 },
                 {
                     "answerId": 4,
+                    "matrixId": 1,
                     "score": [100, 100, 0, 0]
                 },
                 {
                     "answerId": 5,
+                    "matrixId": 1,
                     "score": [0, 0, 0, 100]
                 },
                 {
                     "answerId": 6,
+                    "matrixId": 1,
                     "score": [0, 100, 0, 0]
                 },
                 {
                     "answerId": 7,
+                    "matrixId": 1,
                     "score": [100, 0, 0, 0]
                 },
                 {
                     "answerId": 8,
+                    "matrixId": 1,
                     "score": [0, 0, 50, 0]
                 }
             ]

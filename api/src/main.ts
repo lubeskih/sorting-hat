@@ -7,7 +7,7 @@ async function bootstrap() {
 
   // const tasksService = app.get(TasksService);
   const parserService = app.get(ParserService);
-  await parserService.parse();
+  await parserService.seed();
 
   app.setGlobalPrefix('api');
   await app.listen(process.env.PORT || 3000);
