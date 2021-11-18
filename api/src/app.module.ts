@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule  } from '@nestjs/graphql';
+import { DecisionsModule } from './decisions/decisions.module';
 import { MatrixModule } from './matrix/matrix.module';
 
 import { ParserModule } from './parser/parser.module';
@@ -14,7 +15,8 @@ import { UserModule } from './user/user.module';
     ParserModule,
     SurveyModule,
     MatrixModule,
-    UserModule
+    UserModule,
+    DecisionsModule
   ],
 })
 export class AppModule {}
