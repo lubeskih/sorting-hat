@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QblockComponent } from './qblock.component';
+import { QblockQuestionComponent } from './qblock-question.component';
 
-describe('QblockComponent', () => {
-  let component: QblockComponent;
-  let fixture: ComponentFixture<QblockComponent>;
+describe('QblockQuestionComponent', () => {
+  let component: QblockQuestionComponent;
+  let fixture: ComponentFixture<QblockQuestionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QblockComponent ]
+      declarations: [ QblockQuestionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QblockComponent);
+    fixture = TestBed.createComponent(QblockQuestionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

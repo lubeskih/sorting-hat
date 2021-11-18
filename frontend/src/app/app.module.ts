@@ -1,23 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatGridListModule } from '@angular/material/grid-list'; 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
+import {HttpClientModule} from '@angular/common/http';
+import { GraphQLModule } from './graphql.module';
+import { QblockComponent } from './components/qblock/qblock.component';
+import { QblockQuestionComponent } from './components/qblock-question/qblock-question.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QblockComponent,
+    QblockQuestionComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    MatGridListModule,
-    NoopAnimationsModule,
-    FlexLayoutModule
+    GraphQLModule
   ],
   providers: [],
   bootstrap: [AppComponent]

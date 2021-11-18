@@ -1,1 +1,15 @@
-this is the main :D
+<p>Available surveys:</p>
+<div *ngIf="loading">
+    Loading surveys!
+</div>
+<div *ngIf="error">
+    Errored out!
+</div>
+<div *ngIf="surveys">
+    <div *ngFor="let survey of surveys">
+        <a routerLink="/{{survey.surveyTitle}}" routerLinkActive="active">{{survey.id}}. {{ survey.surveyTitle }}</a>
+    </div>
+</div>
+<div>
+
+</div>

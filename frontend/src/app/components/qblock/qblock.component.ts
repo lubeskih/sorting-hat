@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-// import { BlogEntriesPageable } from 'src/app/model/blog-entry.interface';
-// import { BlogService } from 'src/app/services/blog-service/blog.service';
+import { Apollo } from "apollo-angular";
+import { GET_ALL_SURVEYS } from 'src/app/graphql/graphql.queries';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-qblock',
   templateUrl: './qblock.component.html',
   styleUrls: ['./qblock.component.scss']
 })
-export class QBlockComponent {
-  // blogEntries$: Observable<T> = this.blogService.indexAll(1, 10);
+export class QblockComponent implements OnInit {
+  surveys: any[] = [];
+  loading = true;
+  error: any;
 
-  constructor() { }
+  constructor(private apollo: Apollo) { }
+
+  ngOnInit(): void {
+    this.apollo.watchQuery({
+      query: GET_ALL_SURVEYS
+    })
+    .valueChanges.subscribe((result: any) => {
+      this.surveys = result?.data?.allSurveys;
+      this.loading = result.loading;
+      this.error = result.error;
+    });
+  }
+
 }
