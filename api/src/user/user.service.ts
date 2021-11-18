@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
-import { Answer, CreateUser, Score, UpsertUserAnswer, UserIsDoneWithSurvey } from "src/graphql";
+import { CreateUser, UpsertUserAnswer, UserIsDoneWithSurvey } from "src/graphql";
 import { v4 as uuidv4 } from "uuid";
 import { stringToList } from "src/common/helpers";
 
