@@ -59,6 +59,9 @@ export class SurveyService {
         return this.prisma.question.findUnique({
             where: {
                 id: parseInt(id)
+            },
+            include: {
+                answers: true
             }
         })
     }

@@ -34,7 +34,7 @@ export class SurveyResolvers {
     }
 
     @Query("singleQuestion")
-    async singleQuestion(@Args('id') args: string) {
+    async singleQuestion(@Args('questionId') args: string) {
         return this.surveyService.singleQuestion(args);
     }
 
