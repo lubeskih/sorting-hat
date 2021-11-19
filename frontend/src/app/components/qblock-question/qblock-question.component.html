@@ -5,11 +5,17 @@
     Errored out! No question found.
 </div>
 <div *ngIf="question">
-    <h1>{{question.id}}. {{question.value}}</h1>
-    <div *ngFor="let answer of question.answers">
-        <div>
-            <input type="radio" id="{{answer.id}}" name="answer" value="{{answer.value}}">
-            <label for="huey">{{answer.value}}</label>
-          </div>
-    </div>
+    <label id="example-radio-group-label">{{question.id}}. {{question.value}}</label>
+    <br>
+    <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group">
+        <mat-radio-button class="example-radio-button" *ngFor="let answer of question.answers" [value]="answer.value">
+            {{answer.value}}
+        </mat-radio-button>
+    </mat-radio-group>
+</div>
+<div id="navigation">
+    <button class="nav-button" mat-raised-button color="primary">Previous</button>
+    <button class="nav-button" mat-raised-button color="primary">Next</button>
 </div>

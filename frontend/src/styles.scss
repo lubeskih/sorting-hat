@@ -8,13 +8,14 @@ body {font-family: "Ubuntu Mono", "Helvetica Neue", sans-serif; }
     margin: 25px;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(3, [col] 1fr ) ;
+    grid-template-columns: repeat(4, [col] 1fr ) ;
     // 
     // grid-template-columns: repeat(3, minmax(min(15%, 180px), 1fr));
-    // border: 2px solid blue;
+    border: 2px solid blue;
     grid-template-rows: repeat(2, [row] auto);
     background-color: #fff;
     color: #444;
+    
 }
 
 .box {
@@ -30,7 +31,7 @@ body {font-family: "Ubuntu Mono", "Helvetica Neue", sans-serif; }
 
 .container {
     // background-color: #444;
-    grid-column: col / span 2;
+    grid-column: col 2 /  4;
     grid-row: row 2;
 
     // pod
@@ -41,14 +42,15 @@ body {font-family: "Ubuntu Mono", "Helvetica Neue", sans-serif; }
 }
 
 .title {
-    grid-column: span 3;
+    grid-column: col 2/ 4;
+    border: 2px dashed orange;
 }
 
 .qblock {
-    grid-column: col / span 2;
+    grid-column: col / 3;
     grid-row: 1;
-    height: 550px;
     border: 3px dashed red;;
+    background-color: rgb(246, 246, 246);
 }
 
 .status {
@@ -86,13 +88,6 @@ body {font-family: "Ubuntu Mono", "Helvetica Neue", sans-serif; }
 
 .status ul a {
     text-align: center;
-}
-
-.dtree {
-    grid-column: col 3;
-    grid-row: row 2;
-    background-color: cadetblue;
-    border: 1px dashed yellow;
 }
 
 .title > h1 {
