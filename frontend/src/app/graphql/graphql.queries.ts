@@ -20,4 +20,20 @@ const CREATE_NEW_USER_SESSION = gql`
     }
 `
 
-export { GET_ALL_SURVEYS, CREATE_NEW_USER_SESSION }
+const GET_QUESTION = gql`
+    query GetQuestion($questionId: ID!) {
+        singleQuestion(questionId: $questionId){
+            id
+            value
+            answerChoice
+            answers {
+                id
+                value
+                parentQuestionId
+                nextQuestionId
+            }
+        }
+    }
+`
+
+export { GET_ALL_SURVEYS, CREATE_NEW_USER_SESSION, GET_QUESTION }

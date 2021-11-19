@@ -7,7 +7,7 @@
 </div>
 <div *ngIf="surveys">
     <div *ngFor="let survey of surveys">
-        <a routerLink="/{{survey.surveyTitle}}" routerLinkActive="active">{{survey.id}}. {{ survey.surveyTitle }}</a>
+        <a routerLink="/survey/{{survey.id}}/1">{{survey.id}}. {{ survey.surveyTitle }}</a>
     </div>
 </div>
 <div>

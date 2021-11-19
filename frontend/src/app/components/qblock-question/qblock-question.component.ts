@@ -1,6 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from "apollo-angular";
-import { CREATE_NEW_USER_SESSION } from 'src/app/graphql/graphql.queries';
+import { ActivatedRoute } from '@angular/router';
+import { CREATE_NEW_USER_SESSION, GET_QUESTION } from 'src/app/graphql/graphql.queries';
+
+type Question = {
+  answerChoice: string,
+  value: string,
+  id: string,
+  answers: {
+    id: string,
+    nextQuestionId: string,
+    parentQuestionId: string,
+    value: string
+  }[]
+}
 
 @Component({
   selector: 'app-qblock-question',
@@ -8,14 +21,27 @@ import { CREATE_NEW_USER_SESSION } from 'src/app/graphql/graphql.queries';
   styleUrls: ['./qblock-question.component.scss']
 })
 export class QblockQuestionComponent implements OnInit {
-  session: string = "";
-  question: any = null;
+  question: Question | null = null;
+
   error: any;
   loading = true;
 
-  constructor(private apollo: Apollo) { }
+  surveyId: string = "";
+  surveyQuestionId: string = "";
+
+
+  constructor(private apollo: Apollo, private route: ActivatedRoute) {
+    this.route.params.subscribe((response: any) => {
+      this.surveyId = response.survey_name;
+      this.surveyQuestionId = response.id;
+    }, (error: any) => {
+      console.error("Error", error);
+    })
+  }
 
   createNewUserSession(surveyId: string, currentQuestionId: string) {
+    if (localStorage.getItem("session")) return;
+    
     this.apollo.mutate({
       mutation: CREATE_NEW_USER_SESSION,
       variables: {
@@ -23,17 +49,44 @@ export class QblockQuestionComponent implements OnInit {
         currentQuestionId: currentQuestionId
       }
     }).subscribe(( result: any) => {
-      this.session = result?.data?.createNewUser.sessionToken;
-      localStorage.setItem("session", this.session);
+      const session = result?.data?.createNewUser.sessionToken;
+      localStorage.setItem("session", session);
+    })
+  }
+
+  renderQuestion() {
+    this.apollo.query({
+      query: GET_QUESTION,
+      variables: {
+        questionId: this.surveyQuestionId
+      }
+    }).subscribe((result: any) => {
+      console.log(result)
+      const q = result?.data?.singleQuestion;
+
+      this.loading = result?.loading;
+
+      if (!q) {
+        this.error = "No question found."
+        return;
+      }
+
+      this.question = {
+        answerChoice: q.answerChoice,
+        id: q.id,
+        value: q.value,
+        answers: q.answers.map((answer: any) => ({
+          id: answer.id,
+          nextQuestionId: answer.nextQuestionId,
+          parentQuestionId: answer.parentQuestionId,
+          value: answer.value
+        }))
+      }
     })
   }
 
   ngOnInit(): void {
-    if (!localStorage.getItem("session")) {
-      console.log("no session, storing...");
       this.createNewUserSession("1", "1"); // [TODO]
-    } else {
-      console.log("session exists:", localStorage.getItem("session"));
-    }
+      this.renderQuestion();
   }
 }
