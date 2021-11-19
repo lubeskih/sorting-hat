@@ -8,6 +8,6 @@ export class DecisionsResolvers {
 
     @Query("getDecision")
     async decision(@Args('input') args: GetDecision) {
-        return this.decisionsService.decision(args.userId);
+        return this.decisionsService.decision(args.userSessionToken);
     }
 }

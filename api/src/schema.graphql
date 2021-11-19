@@ -108,11 +108,11 @@ input UpsertUserAnswer {
     selected: Boolean!
     answerId: ID!
     questionId: ID!
-    userId: ID!
+    userSessionToken: String!
 }
 
 input GetDecision {
-    userId: ID!
+    userSessionToken: ID!
 }
 
 # QUERIES #
@@ -159,5 +159,5 @@ type Mutation {
     userIsDone(input: UserIsDoneWithSurvey): User!
 
     # User - Answer
-    createNewUserAnswer(input: UpsertUserAnswer): Answer!
+    createNewUserAnswer(input: UpsertUserAnswer): UserAnswer!
 }

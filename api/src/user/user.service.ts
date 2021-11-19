@@ -24,17 +24,19 @@ export class UserService {
 
     // create new user answer
     async createNewUserAnswer(input: UpsertUserAnswer) {
+        const { id } = await this.getUserBySessionToken(input.userSessionToken);
+
         // bad way of handling it!
         // needs to be refactored.
         await this.prisma.userAnswer.deleteMany({
             where: {
-                AND: [{ questionId: parseInt(input.questionId)}, { userId: parseInt(input.userId) }]
+                AND: [{ questionId: parseInt(input.questionId)}, { userId: id }]
             }
         })
 
         return this.prisma.userAnswer.create({
             data: {
-                userId: parseInt(input.userId),
+                userId: id,
                 answerId: parseInt(input.answerId),
                 selected: input.selected,
                 questionId: parseInt(input.questionId)
@@ -61,7 +63,7 @@ export class UserService {
                 sessionToken: sessionToken
             }
         })
-    }
+    }''
 
     async getUserAnswerScores(sessionToken: string) {
         const user = await this.getUserBySessionToken(sessionToken);

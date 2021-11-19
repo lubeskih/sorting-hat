@@ -54,11 +54,11 @@ export class UpsertUserAnswer {
     selected: boolean;
     answerId: string;
     questionId: string;
-    userId: string;
+    userSessionToken: string;
 }
 
 export class GetDecision {
-    userId: string;
+    userSessionToken: string;
 }
 
 export class Survey {
@@ -147,7 +147,7 @@ export abstract class IMutation {
 
     abstract userIsDone(input?: Nullable<UserIsDoneWithSurvey>): User | Promise<User>;
 
-    abstract createNewUserAnswer(input?: Nullable<UpsertUserAnswer>): Answer | Promise<Answer>;
+    abstract createNewUserAnswer(input?: Nullable<UpsertUserAnswer>): UserAnswer | Promise<UserAnswer>;
 }
 
 type Nullable<T> = T | null;

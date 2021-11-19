@@ -19,7 +19,7 @@ export class DecisionsService {
 
         await this.userService.userIsDoneWithSurvey({
             isDone: true,
-            userId: userSessionToken
+            userId: user.id.toString(),
         })
 
         const scoreMatrix = await this.userService.getUserAnswerScores(userSessionToken);
@@ -42,6 +42,6 @@ export class DecisionsService {
             finalScores.push(x);
         })
 
-        return finalScores.toString();
+        return finalScores;
     }
 }

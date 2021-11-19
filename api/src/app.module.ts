@@ -16,6 +16,7 @@ import { UserModule } from './user/user.module';
     SurveyModule,
     MatrixModule,
     UserModule,
+    DecisionsModule
   ],
 })
 export class AppModule {}
