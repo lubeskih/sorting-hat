@@ -1,4 +1,4 @@
-<p>Available surveys:</p>
+<h1>Available surveys:</h1>
 <div *ngIf="loading">
     Loading surveys!
 </div>
@@ -7,7 +7,9 @@
 </div>
 <div *ngIf="surveys">
     <div *ngFor="let survey of surveys">
-        <a routerLink="/survey/{{survey.id}}/1">{{survey.id}}. {{ survey.surveyTitle }}</a>
+        <button routerLink="/survey/{{survey.id}}/1" mat-raised-button color="primary">
+          {{ survey.surveyTitle | uppercase }}
+        </button>
     </div>
 </div>
 <div>
