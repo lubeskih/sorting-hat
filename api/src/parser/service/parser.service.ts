@@ -116,22 +116,37 @@ export class ParserService {
     }
 
     async storeAnswerScores(scores: CreateAnswerScore[]) {
-        return Promise.all(scores.map(score => this.matrixService.createNewAnswerScore(score)));
+        // return Promise.all(scores.map(score => this.matrixService.createNewAnswerScore(score)));
+        for (let score of scores) {
+            await this.matrixService.createNewAnswerScore(score);
+        }
     }
 
     async storeAnswers(survey_question_answers: CreateAnswer[]) {
-        return Promise.all(survey_question_answers.map(sqa => this.surveyService.createNewAnswer(sqa)))
+        // return Promise.all(survey_question_answers.map(sqa => this.surveyService.createNewAnswer(sqa)))
+        for (let sqa of survey_question_answers) {
+            await this.surveyService.createNewAnswer(sqa);
+        }
     }
     
     async storeQuestions(survey_questions: CreateQuestion[]) {
-        return Promise.all(survey_questions.map(sq => this.surveyService.createNewQuestion(sq)))
+        // return Promise.all(survey_questions.map(sq => this.surveyService.createNewQuestion(sq)))
+        for (let sq of survey_questions) {
+            await this.surveyService.createNewQuestion(sq);
+        }
     }
 
     async storeSurvey(surveys: CreateSurvey[]) {
-        return Promise.all(surveys.map(s => this.surveyService.createNewSurvey(s)))
+        // return Promise.all(surveys.map(s => this.surveyService.createNewSurvey(s)))
+        for (let s of surveys) {
+            await this.surveyService.createNewSurvey(s);
+        }
     }
 
     async storeMatrix(matrices: CreateMatrix[]) {
-        return Promise.all(matrices.map(m => this.matrixService.createNewMatrix(m)));
+        // return Promise.all(matrices.map(m => this.matrixService.createNewMatrix(m)));
+        for (let m of matrices) {
+            await this.matrixService.createNewMatrix(m)
+        }
     }
 }

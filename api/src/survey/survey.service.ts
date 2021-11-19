@@ -61,7 +61,11 @@ export class SurveyService {
                 id: parseInt(id)
             },
             include: {
-                answers: true
+                answers: {
+                    where: {
+                        parentQuestionId: parseInt(id)
+                    }
+                }
             }
         })
     }
