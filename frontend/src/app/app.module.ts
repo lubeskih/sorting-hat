@@ -11,13 +11,15 @@ import { QblockComponent } from './components/qblock/qblock.component';
 import { QblockQuestionComponent } from './components/qblock-question/qblock-question.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScoreComponent } from './components/score/score.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QblockComponent,
     QblockQuestionComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ScoreComponent
   ],
   imports: [
     MatButtonModule,

@@ -36,4 +36,29 @@ const GET_QUESTION = gql`
     }
 `
 
-export { GET_ALL_SURVEYS, CREATE_NEW_USER_SESSION, GET_QUESTION }
+const SUBMIT_USER_ANSWER = gql`
+    mutation CreateUserAnswer($selected: Boolean!, $answerId: ID!, $questionId: ID!, $userSessionToken: String!) {
+        createNewUserAnswer(input:{
+            selected: $selected,
+            answerId: $answerId,
+            questionId: $questionId,
+            userSessionToken:$userSessionToken,
+        }) {
+            nextQuestionId
+            parentQuestionId
+            id
+            value
+        }
+    }
+`
+
+const GET_SCORE = gql`
+    query GetDecision($userSessionToken: ID!) {
+        getDecision(input:{userSessionToken:$userSessionToken}) {
+            percent
+            points
+        }
+    }
+`
+
+export { GET_ALL_SURVEYS, CREATE_NEW_USER_SESSION, GET_QUESTION, SUBMIT_USER_ANSWER, GET_SCORE }

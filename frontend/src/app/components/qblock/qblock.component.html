@@ -8,7 +8,7 @@
 <div *ngIf="surveys">
     <div *ngFor="let survey of surveys">
         <button routerLink="/survey/{{survey.id}}/1" mat-raised-button color="primary">
-          {{ survey.surveyTitle | uppercase }}
+            {{ survey.surveyTitle | uppercase }}
         </button>
     </div>
 </div>

@@ -7,15 +7,15 @@
 <div *ngIf="question">
     <label id="example-radio-group-label">{{question.id}}. {{question.value}}</label>
     <br>
-    <mat-radio-group
-    aria-labelledby="example-radio-group-label"
-    class="example-radio-group">
-        <mat-radio-button class="example-radio-button" *ngFor="let answer of question.answers" [value]="answer.value">
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+        <mat-radio-button (change)="radioChange($event)" class="example-radio-button"
+            *ngFor="let answer of question.answers" [value]="answer.id">
             {{answer.value}}
         </mat-radio-button>
     </mat-radio-group>
 </div>
 <div id="navigation">
-    <button class="nav-button" mat-raised-button color="primary">Previous</button>
-    <button class="nav-button" mat-raised-button color="primary">Next</button>
+    <button class="nav-button" (click)="onPreviousPage($event)" mat-raised-button color="primary">Previous</button>
+    <button class="nav-button" disabled="{{!answerSelected}}" (click)="onNextPage($event)" mat-raised-button
+        color="primary">Next</button>
 </div>

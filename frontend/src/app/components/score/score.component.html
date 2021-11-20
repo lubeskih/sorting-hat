@@ -1,0 +1,16 @@
+    <div *ngIf="loading">
+        Loading scores!
+    </div>
+    <div *ngIf="error">
+        {{error}}
+    </div>
+    <div class="status" *ngIf="scores">
+        <ul>
+            <li *ngFor="let score of scores">
+                {{ score.house }}: <span class="score">{{score.percent}}% | {{ score.points }}</span>
+            </li>
+        </ul>
+    </div>
+    <div>
+
+    </div>

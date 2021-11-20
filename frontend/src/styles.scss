@@ -21,12 +21,6 @@ body {font-family: "Ubuntu Mono", "Helvetica Neue", sans-serif; }
 .box {
     color: rgb(0, 0, 0);
     padding: 20px;
-    // border: 2px dashed red;
-}
-
-.box .box {
-    // background-color: rgb(255, 255, 255);
-    // color: rgb(0, 0, 0);
 }
 
 .container {
@@ -49,15 +43,14 @@ body {font-family: "Ubuntu Mono", "Helvetica Neue", sans-serif; }
 .qblock {
     grid-column: col / 3;
     grid-row: 1;
-    border: 3px dashed red;;
-    // background-color: rgb(246, 246, 246);
+    border: 3px dashed red;
 }
 
 .status {
     grid-column: col 1;
     background-color: rgb(32, 32, 32);
     color: white;
-    border: 0.5px solid lightblue;
+    // border: 0.5px solid lightblue;
     grid-row: row 2;
 }
 
@@ -68,34 +61,9 @@ body {font-family: "Ubuntu Mono", "Helvetica Neue", sans-serif; }
     border-left: 10px solid #ccc;
 }
 
-.status > ul {
-    text-decoration: none;
-    padding-left: 0px;
-    list-style-type: none;
-    display: block;
-    list-style-position: inside;
-    overflow: hidden;
-    margin-left: 0 auto;
-}
-
-.status > ul > li {
-    float: left;
-    margin: 5px;
-    padding: 5px;
-    width: 150px;
-    border: 0.5px solid white;
-}
-
-.status ul a {
-    text-align: center;
-}
-
 .title > h1 {
     margin: 0px;
 }
 
-.score {
-    float: right;
-}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
