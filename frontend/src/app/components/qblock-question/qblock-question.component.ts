@@ -1,19 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from "apollo-angular";
 import { ActivatedRoute, Router } from '@angular/router';
-import { CREATE_NEW_USER_SESSION, GET_QUESTION, GET_SCORE, SUBMIT_USER_ANSWER } from 'src/app/graphql/graphql.queries';
-
-type Question = {
-  answerChoice: string,
-  value: string,
-  id: string,
-  answers: {
-    id: string,
-    nextQuestionId: string,
-    parentQuestionId: string,
-    value: string
-  }[]
-}
+import { CREATE_NEW_USER_SESSION, GET_QUESTION, SUBMIT_USER_ANSWER } from 'src/app/graphql/graphql.queries';
+import { Question } from 'src/app/common/types';
 
 @Component({
   selector: 'app-qblock-question',
@@ -49,6 +38,26 @@ export class QblockQuestionComponent implements OnInit {
   onPreviousPage(event: any) {
   }
 
+  onSurveyDone(event: any) {
+    // [TODO] remove session token
+
+    let userSessionToken = sessionStorage.getItem("session");
+
+    this.apollo.mutate({
+      mutation: SUBMIT_USER_ANSWER,
+      variables: {
+        selected: this.answerSelected,
+        answerId: this.selectedAnswerId,
+        questionId: this.surveyQuestionId,
+        userSessionToken: userSessionToken,
+      }
+    }).subscribe((result: any) => {
+      if (this.question?.lastQuestion) {
+        this.router.navigate([`/survey/${this.surveyId}/${this.question.id}/results`]);
+      }
+    })
+  }
+
   onNextPage(event: any) {
     let nextQuestionId: number;
     let userSessionToken = sessionStorage.getItem("session");
@@ -63,10 +72,7 @@ export class QblockQuestionComponent implements OnInit {
       }
     }).subscribe((result: any) => {
       nextQuestionId = result?.data?.createNewUserAnswer.nextQuestionId;
-
-      if (!this.isLastQuestion) {
-        this.router.navigate([`/survey/${this.surveyId}/${nextQuestionId}`])
-      }
+      this.router.navigate([`/survey/${this.surveyId}/${nextQuestionId}`])
     })
   }
 
@@ -91,6 +97,8 @@ export class QblockQuestionComponent implements OnInit {
   }
 
   renderQuestion() {
+    this.answerSelected = false;
+
     this.apollo.query({
       query: GET_QUESTION,
       variables: {
@@ -110,6 +118,7 @@ export class QblockQuestionComponent implements OnInit {
         answerChoice: q.answerChoice,
         id: q.id,
         value: q.value,
+        lastQuestion: q.lastQuestion,
         answers: q.answers.map((answer: any) => ({
           id: answer.id,
           nextQuestionId: answer.nextQuestionId,
@@ -121,6 +130,6 @@ export class QblockQuestionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.createNewUserSession("1", "1"); // [TODO]
+    this.createNewUserSession("1", "1"); // [TODO]
   }
 }

@@ -13,9 +13,12 @@
             {{answer.value}}
         </mat-radio-button>
     </mat-radio-group>
-</div>
-<div id="navigation">
-    <button class="nav-button" (click)="onPreviousPage($event)" mat-raised-button color="primary">Previous</button>
-    <button class="nav-button" disabled="{{!answerSelected}}" (click)="onNextPage($event)" mat-raised-button
-        color="primary">Next</button>
+    <div id="navigation">
+        <button class="nav-button" (click)="onPreviousPage($event)" mat-raised-button color="primary">Previous</button>
+
+        <button *ngIf="!question.lastQuestion; else elseBlock" class="nav-button" disabled="{{!answerSelected}}" (click)="onNextPage($event)" mat-raised-button color="primary">Next</button>
+        <ng-template #elseBlock>
+            <button class="nav-button" disabled="{{!answerSelected}}" (click)="onSurveyDone($event)" mat-raised-button color="warn">Done!</button>
+        </ng-template>
+    </div>
 </div>

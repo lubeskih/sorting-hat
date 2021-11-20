@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { QblockQuestionComponent } from './components/qblock-question/qblock-question.component';
 import { QblockComponent } from './components/qblock/qblock.component';
+import { ResultsComponent } from './components/results/results.component';
 import { ScoreComponent } from './components/score/score.component';
 
 const routes: Routes = [
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: '',
         component: QblockQuestionComponent,
+      },
+      {
+        path: 'results',
+        component: ResultsComponent,
       },
       {
         path: '',

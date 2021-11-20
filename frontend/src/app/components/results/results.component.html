@@ -1,0 +1,9 @@
+<div *ngIf="loading">
+    Loading question!
+</div>
+<div *ngIf="error">
+    Errored out! No question found.
+</div>
+<div *ngIf="result">
+    <h1>Congrats! You belong most in <span id="result">{{finalHouse}}</span> with <span id="result">{{finalPercent}}</span>% accuracy and <span id="result">{{finalPoints}}</span> points. :-)</h1>
+</div>

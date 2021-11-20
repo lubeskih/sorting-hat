@@ -26,6 +26,7 @@ const GET_QUESTION = gql`
             id
             value
             answerChoice
+            lastQuestion
             answers {
                 id
                 value

@@ -1,20 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
+import { HOUSES } from 'src/app/common/constants';
+import { Decisions, Score } from 'src/app/common/types';
 import { GET_SCORE } from 'src/app/graphql/graphql.queries';
-
-type Decisions = {
-  percent: number,
-  points: number,
-};
-
-type Score = {
-  house: string,
-  percent: string,
-  points: number,
-}
-
-const HOUSES = ["Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin"];
 
 @Component({
   selector: 'app-score',
@@ -28,8 +17,6 @@ export class ScoreComponent implements OnInit {
   error: any;
 
   constructor(private apollo: Apollo, private route: ActivatedRoute) { 
-    
-
     this.route.params.subscribe((response: any) => {
       this.userSessionToken = sessionStorage.getItem("session");
 
@@ -40,6 +27,7 @@ export class ScoreComponent implements OnInit {
         },
         fetchPolicy: 'network-only',
       }).subscribe((result: any) => {
+        console.log("NEMA A?");
         this.scores = [];
         this.loading = result?.loading;
   
@@ -59,10 +47,5 @@ export class ScoreComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if (!sessionStorage.getItem("session")) {
-    //   this.loading = false;
-    //   this.error = "No session found. Refresh the page.";
-    //   return;
-    // };
   }
 }

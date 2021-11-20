@@ -1,0 +1,1 @@
+export const HOUSES = ["Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin"];
