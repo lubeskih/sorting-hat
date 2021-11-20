@@ -3,7 +3,7 @@ import {HttpLink} from 'apollo-angular/http';
 import {ApolloClientOptions, InMemoryCache} from '@apollo/client/core';
 import { NgModule } from '@angular/core';
 
-export const uri = "http://localhost:3000/graphql"; // GraphQL API
+export const uri = "http://0.0.0.0:3000/graphql"; // GraphQL API
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     return {
