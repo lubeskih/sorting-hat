@@ -39,8 +39,6 @@ export class QblockQuestionComponent implements OnInit {
   }
 
   onSurveyDone(event: any) {
-    // [TODO] remove session token
-
     let userSessionToken = sessionStorage.getItem("session");
 
     this.apollo.mutate({
@@ -53,7 +51,7 @@ export class QblockQuestionComponent implements OnInit {
       }
     }).subscribe((result: any) => {
       if (this.question?.lastQuestion) {
-        this.router.navigate([`/survey/${this.surveyId}/${this.question.id}/results`]);
+        this.router.navigate([`/survey/${this.surveyId}/done/results`]);
       }
     })
   }

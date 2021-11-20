@@ -27,7 +27,7 @@ export class ScoreComponent implements OnInit {
         },
         fetchPolicy: 'network-only',
       }).subscribe((result: any) => {
-        console.log("NEMA A?");
+        console.log("YESSSSSSSSSSS!");
         this.scores = [];
         this.loading = result?.loading;
   

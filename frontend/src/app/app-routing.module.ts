@@ -19,13 +19,13 @@ const routes: Routes = [
         component: QblockQuestionComponent,
       },
       {
-        path: 'results',
-        component: ResultsComponent,
-      },
-      {
         path: '',
         component: ScoreComponent,
         outlet: 'score'
+      },
+      {
+        path: 'results',
+        component: ResultsComponent,
       },
     ]
   },

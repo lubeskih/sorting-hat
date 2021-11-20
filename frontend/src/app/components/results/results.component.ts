@@ -25,6 +25,11 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userSessionToken = sessionStorage.getItem("session");
+    if (!this.userSessionToken) {
+      this.loading = false;
+      this.error = "No user session. Start the survey from the beginning."
+      return;
+    }
 
     this.apollo.query<any>({
       query: GET_SCORE,
@@ -46,6 +51,8 @@ export class ResultsComponent implements OnInit {
         this.finalPoints = max.points
       }
     })
-  }
 
+    // remove session
+    sessionStorage.removeItem('session');
+  }
 }
