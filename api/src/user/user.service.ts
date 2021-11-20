@@ -34,14 +34,19 @@ export class UserService {
             }
         })
 
-        return this.prisma.userAnswer.create({
+        const { answer } = await this.prisma.userAnswer.create({
             data: {
                 userId: id,
                 answerId: parseInt(input.answerId),
                 selected: input.selected,
                 questionId: parseInt(input.questionId)
+            },
+            select: {
+                answer: true
             }
         })
+
+        return answer;
     }
 
     async userIsDoneWithSurvey(input: UserIsDoneWithSurvey){

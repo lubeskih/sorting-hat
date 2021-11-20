@@ -79,7 +79,7 @@
     "matrix": [
         {
             "surveyTitle": "pottermore",
-            "bias": [3, -1, 2, -3],
+            "bias": [3, 2, 1, 0],
             "surveyMatrix": [
                 {
                     "answerId": 1,

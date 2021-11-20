@@ -40,6 +40,11 @@ type Score {
     answerId: ID!
 }
 
+type Decision {
+    percent: Float!
+    points: Int!
+}
+
 ########
 # USER #
 ########
@@ -58,6 +63,7 @@ type UserAnswer {
     answerId: ID!
     userId: ID!
 }
+
 
 # INPUTS TYPES #
 ################
@@ -129,7 +135,7 @@ type Query {
     singleAnswer(answerId: ID!): Answer
     
     # Score
-    getDecision(input: GetDecision): [Float]!
+    getDecision(input: GetDecision): [Decision]!
 
     # User
     user(userId: ID!): User!
@@ -159,5 +165,5 @@ type Mutation {
     userIsDone(input: UserIsDoneWithSurvey): User!
 
     # User - Answer
-    createNewUserAnswer(input: UpsertUserAnswer): UserAnswer!
+    createNewUserAnswer(input: UpsertUserAnswer): Answer
 }

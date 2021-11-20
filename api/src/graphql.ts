@@ -96,6 +96,11 @@ export class Score {
     answerId: string;
 }
 
+export class Decision {
+    percent: number;
+    points: number;
+}
+
 export class User {
     id: string;
     createdAt: string;
@@ -125,7 +130,7 @@ export abstract class IQuery {
 
     abstract singleAnswer(answerId: string): Nullable<Answer> | Promise<Nullable<Answer>>;
 
-    abstract getDecision(input?: Nullable<GetDecision>): Nullable<number>[] | Promise<Nullable<number>[]>;
+    abstract getDecision(input?: Nullable<GetDecision>): Nullable<Decision>[] | Promise<Nullable<Decision>[]>;
 
     abstract user(userId: string): User | Promise<User>;
 }
@@ -147,7 +152,7 @@ export abstract class IMutation {
 
     abstract userIsDone(input?: Nullable<UserIsDoneWithSurvey>): User | Promise<User>;
 
-    abstract createNewUserAnswer(input?: Nullable<UpsertUserAnswer>): UserAnswer | Promise<UserAnswer>;
+    abstract createNewUserAnswer(input?: Nullable<UpsertUserAnswer>): Nullable<Answer> | Promise<Nullable<Answer>>;
 }
 
 type Nullable<T> = T | null;
