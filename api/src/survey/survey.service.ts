@@ -37,7 +37,8 @@ export class SurveyService {
             data: {
                 answerChoice: input.answerChoice,
                 value: input.value,
-                parentSurveyId: parseInt(input.parentSurveyId)
+                parentSurveyId: parseInt(input.parentSurveyId),
+                lastQuestion: input.lastQuestion
             }
         })
     }

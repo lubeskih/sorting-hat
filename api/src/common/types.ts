@@ -15,6 +15,7 @@ export const SurveyQuestion = z.object({
   value: z.string(),
   answerChoice: InputTypes,
   parentSurveyId: z.number(),
+  lastQuestion: z.boolean(),
   answers: z.array(PossibleSurveyAnswers),
 });
 export type SurveyQuestion = z.infer<typeof SurveyQuestion>;

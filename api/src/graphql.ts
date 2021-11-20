@@ -36,6 +36,7 @@ export class CreateQuestion {
     value: string;
     answerChoice: string;
     parentSurveyId: string;
+    lastQuestion: boolean;
 }
 
 export class CreateAnswer {
@@ -72,6 +73,7 @@ export class Question {
     value: string;
     answerChoice: string;
     parentSurveyId: string;
+    lastQuestion: boolean;
     answers?: Nullable<Nullable<Answer>[]>;
 }
 

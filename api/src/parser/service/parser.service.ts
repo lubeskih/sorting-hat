@@ -81,6 +81,7 @@ export class ParserService {
                     answerChoice: question.answerChoice,
                     parentSurveyId: question.parentSurveyId.toString(),
                     value: question.value,
+                    lastQuestion: question.lastQuestion
                 }
 
                 survey_questions.push(q);

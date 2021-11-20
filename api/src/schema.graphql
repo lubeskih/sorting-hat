@@ -12,8 +12,8 @@ type Question {
     value: String!
     answerChoice: String!
     parentSurveyId: ID!
+    lastQuestion: Boolean!
     answers: [Answer]
-    # usersLookingAtThisQuestion [User]
 }
 
 type Answer {
@@ -96,6 +96,7 @@ input CreateQuestion {
     value: String!
     answerChoice: String!
     parentSurveyId: ID!
+    lastQuestion: Boolean!
 }
 
 input CreateAnswer {

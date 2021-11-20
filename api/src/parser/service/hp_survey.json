@@ -8,6 +8,7 @@
                     "value": "Dawn or dusk?",
                     "answerChoice": "radio_button",
                     "parentSurveyId": 1,
+                    "lastQuestion": false,
                     "answers": [
                         {
                             "value": "Dawn",
@@ -25,6 +26,7 @@
                     "value": "Forest or River?",
                     "answerChoice": "normal_button",
                     "parentSurveyId": 1,
+                    "lastQuestion": false,
                     "answers": [
                         {
                             "value": "Forest",
@@ -42,16 +44,17 @@
                     "value": "Violin or Piano?",
                     "answerChoice": "radio_button",
                     "parentSurveyId": 1,
+                    "lastQuestion": false,
                     "answers": [
                         {
                             "value": "Violin",
                             "parentQuestionId": 3,
-                            "nextQuestionId": 3
+                            "nextQuestionId": 5
                         },
                         {
                             "value": "Piano",
                             "parentQuestionId": 3,
-                            "nextQuestionId": 3
+                            "nextQuestionId": 5
                         }
                     ]
                 },
@@ -59,16 +62,50 @@
                     "value": "Volunteer to fight?",
                     "answerChoice": "radio_button",
                     "parentSurveyId": 1,
+                    "lastQuestion": false,
                     "answers": [
                         {
                             "value": "Yes",
                             "parentQuestionId": 4,
-                            "nextQuestionId": 4
+                            "nextQuestionId": 5
                         },
                         {
                             "value": "No",
                             "parentQuestionId": 4,
-                            "nextQuestionId": 4
+                            "nextQuestionId": 5
+                        }
+                    ]
+                },
+                {
+                    "value": "Do you prefer a house or you want to let the sorting hat do the placement?",
+                    "answerChoice": "radio_button",
+                    "parentSurveyId": 1,
+                    "lastQuestion": true,
+                    "answers": [
+                        {
+                            "value": "Let sorting hat",
+                            "parentQuestionId": 5,
+                            "nextQuestionId": 5
+                        },
+                        {
+                            "value": "Gryffindor",
+                            "parentQuestionId": 5,
+                            "nextQuestionId": 5
+                        },
+                        {
+                            "value": "Ravenclaw",
+                            "parentQuestionId": 5,
+                            "nextQuestionId": 5
+                        },
+                        {
+                            "value": "Hufflepuff",
+                            "parentQuestionId": 5,
+                            "nextQuestionId": 5
+                        },
+                        {
+                            "value": "Slytherin",
+                            "parentQuestionId": 5,
+                            "nextQuestionId": 5
                         }
                     ]
                 }
@@ -120,6 +157,31 @@
                     "answerId": 8,
                     "matrixId": 1,
                     "score": [0, 0, 50, 0]
+                },
+                {
+                    "answerId": 9,
+                    "matrixId": 1,
+                    "score": [0, 0, 0, 0]
+                },
+                {
+                    "answerId": 10,
+                    "matrixId": 1,
+                    "score": [500, 0, 0, 0]
+                },
+                {
+                    "answerId": 11,
+                    "matrixId": 1,
+                    "score": [0, 500, 0, 0]
+                },
+                {
+                    "answerId": 12,
+                    "matrixId": 1,
+                    "score": [0, 0, 500, 0]
+                },
+                {
+                    "answerId": 13,
+                    "matrixId": 1,
+                    "score": [0, 0, 0, 500]
                 }
             ]
         }

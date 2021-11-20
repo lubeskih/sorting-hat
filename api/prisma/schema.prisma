@@ -32,6 +32,7 @@ model Question {
   id Int @id @default(autoincrement())
   value String
   answerChoice String
+  lastQuestion Boolean @default(false)
 
   survey Survey @relation(fields: [parentSurveyId], references: [id]) //  relation fields do not exist in the database
   parentSurveyId Int // Survey#id (fk, exists in db)
