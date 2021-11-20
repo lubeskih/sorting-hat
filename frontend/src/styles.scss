@@ -2,20 +2,16 @@
 
 html {
  }
-body {font-family: "Ubuntu Mono", "Helvetica Neue", sans-serif; }
+body {font-family: "Monospace", "Helvetica Neue", sans-serif; }
 
 .wrapper {
     margin: 25px;
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(4, [col] 1fr ) ;
-    // 
-    // grid-template-columns: repeat(3, minmax(min(15%, 180px), 1fr));
-    border: 2px solid blue;
     grid-template-rows: repeat(2, [row] auto);
     background-color: #fff;
     color: #444;
-    
 }
 
 .box {
@@ -37,20 +33,30 @@ body {font-family: "Ubuntu Mono", "Helvetica Neue", sans-serif; }
 
 .title {
     grid-column: col 2/ 4;
-    border: 2px dashed orange;
+}
+
+#link {
+    text-decoration:none; 
+    padding: 3px; 
+    background-color:#2b303b; 
+    color:white;
+    font-weight: bold;;
+}
+
+#link:hover {
+    background-color:#909194; 
 }
 
 .qblock {
     grid-column: col / 3;
     grid-row: 1;
-    border: 3px dashed red;
+    background: antiquewhite;
 }
 
 .status {
     grid-column: col 1;
     background-color: rgb(32, 32, 32);
     color: white;
-    // border: 0.5px solid lightblue;
     grid-row: row 2;
 }
 
