@@ -22,18 +22,17 @@ const HOUSES = ["Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin"];
   styleUrls: ['./score.component.scss']
 })
 export class ScoreComponent implements OnInit {
-  userSessionToken: string = "";
+  userSessionToken: any = "";
   scores: Score[] = [];
   loading = true;
   error: any;
 
   constructor(private apollo: Apollo, private route: ActivatedRoute) { 
-    let session = localStorage.getItem("session");
-    if (session) {
-      this.userSessionToken = session;
-    }
+    
 
     this.route.params.subscribe((response: any) => {
+      this.userSessionToken = sessionStorage.getItem("session");
+
       this.apollo.query<any>({
         query: GET_SCORE,
         variables: {
@@ -60,7 +59,7 @@ export class ScoreComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if (!localStorage.getItem("session")) {
+    // if (!sessionStorage.getItem("session")) {
     //   this.loading = false;
     //   this.error = "No session found. Refresh the page.";
     //   return;

@@ -51,7 +51,7 @@ export class QblockQuestionComponent implements OnInit {
 
   onNextPage(event: any) {
     let nextQuestionId: number;
-    let userSessionToken = localStorage.getItem("session");
+    let userSessionToken = sessionStorage.getItem("session");
 
     this.apollo.mutate({
       mutation: SUBMIT_USER_ANSWER,
@@ -76,7 +76,7 @@ export class QblockQuestionComponent implements OnInit {
   }
 
   createNewUserSession(surveyId: string, currentQuestionId: string) {
-    if (localStorage.getItem("session")) return;
+    if (sessionStorage.getItem("session")) return;
     
     this.apollo.mutate({
       mutation: CREATE_NEW_USER_SESSION,
@@ -86,7 +86,7 @@ export class QblockQuestionComponent implements OnInit {
       }
     }).subscribe((result: any) => {
       const session = result?.data?.createNewUser.sessionToken;
-      localStorage.setItem("session", session);
+      sessionStorage.setItem("session", session);
     })
   }
 
