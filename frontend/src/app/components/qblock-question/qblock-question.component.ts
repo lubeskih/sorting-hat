@@ -3,6 +3,7 @@ import { Apollo } from "apollo-angular";
 import { ActivatedRoute, Router } from '@angular/router';
 import { CREATE_NEW_USER_SESSION, GET_QUESTION, SUBMIT_USER_ANSWER } from 'src/app/graphql/graphql.queries';
 import { Question } from 'src/app/common/types';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-qblock-question',
@@ -24,7 +25,7 @@ export class QblockQuestionComponent implements OnInit {
   userSessionToken: string = "";
   isLastQuestion: boolean = false;
 
-  constructor(private apollo: Apollo, private route: ActivatedRoute, private router: Router) {
+  constructor(private apollo: Apollo, private route: ActivatedRoute, private router: Router, private location: Location) {
     this.route.params.subscribe((response: any) => {
       this.surveyId = response.survey_name;
       this.surveyQuestionId = response.id;
@@ -36,6 +37,7 @@ export class QblockQuestionComponent implements OnInit {
   }
 
   onPreviousPage(event: any) {
+    this.location.back()
   }
 
   onSurveyDone(event: any) {
