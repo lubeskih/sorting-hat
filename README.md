@@ -3,7 +3,7 @@
 
 This repository hosts a questionnaire/survey/quiz-like application, which consist of a backend that is agnostic of the type of survey the user is taking, and a frontend that is specific to the topic of the survey.
 
-It is using **Angular** as it's frontend, including **apollo** and **graphql** both on the front and the back. **NestJS** for the backend and **prisma** as a Node.js/TypeScript ORM, with an **sqlite** database.
+It is using **Angular** as it's frontend, including **Apollo** and **GraphQL** both on the front and the back. **NestJS** for the backend and **Prisma** as a Node.js/TypeScript ORM, with an **SQLite** database.
 
 ![Sorting hat use](docs/assets/sorting-hat-use.gif)
 
@@ -21,7 +21,7 @@ _view in bigger resolution [here](https://raw.githubusercontent.com/lubeskih/sor
     - [Matrix](#Matrix)
     - [Survey](#Survey)
     - [User](#User)
-- [Scoring and decisions](#Decision)
+- [Scoring and decisions](#Scoring-and-decisions)
 - [Database models and relations diagram](#Database-models-and-relations-diagram)
 
 
