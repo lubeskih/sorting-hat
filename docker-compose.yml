@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  sorting-hat-backend:
+    build: api/
+    ports:
+      - "3000:3000"
+
+  sorting-hat-frontend:
+    build: frontend
+    depends_on:
+      - "sorting-hat-backend"
+    ports:
+      - "4200:4200"
+
