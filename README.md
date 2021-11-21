@@ -7,7 +7,7 @@ It is using **Angular** as it's frontend, including **apollo** and **graphql** b
 In this README I use questionnaire/survey/quiz interchangeably, but I really mean of an application that gives you possible questions and answers, and with each answer on a question you score points towards a final result.
 
 ![decision tree](docs/assets/decision-tree.png)
-_view in bigger resolution [here](https://raw.githubusercontent.com/lubeskih/sorting-hat/main/docs/assets/decision-tree.png?token=ALSATGCRDIGJHBLZOVEBIX3BTIVPM)_
+_view in bigger resolution [here](https://raw.githubusercontent.com/lubeskih/sorting-hat/main/docs/assets/decision-tree.png)_
 
 **Table of Contents**
 
@@ -135,7 +135,7 @@ When a user chooses and answers and continues to the next question, the `Decisio
 This diagram shows how the `DecisionsService` is doing the calculations:
 
 ![scoring diagram](docs/assets/scoring.png)
-_view in bigger resolution [here]()_
+_view in bigger resolution [here](https://raw.githubusercontent.com/lubeskih/sorting-hat/main/docs/assets/scoring.png)_
 
 What we see here is, each column of the answer matrix represents points given to each house. For each column, the values are added, which represent the total score of one house. After we find the total score of each house, those scores are added to find the total score of all houses together.
 
@@ -151,7 +151,7 @@ score = 100 * (score_house / score_total)
 <br>
 
 ![db relations](docs/assets/relations.png)
-_view in bigger resolution [here](https://raw.githubusercontent.com/lubeskih/sorting-hat/main/docs/assets/relations.png?token=ALSATGCI3CL5GJTPYJIMWH3BTIVVU)_
+_view in bigger resolution [here](https://raw.githubusercontent.com/lubeskih/sorting-hat/main/docs/assets/relations.png)_
 
 ## License
 
