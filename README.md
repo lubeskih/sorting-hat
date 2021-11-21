@@ -1,10 +1,15 @@
 # Sorting hat
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
 This repository hosts a questionnaire/survey/quiz-like application, which consist of a backend that is agnostic of the type of survey the user is taking, and a frontend that is specific to the topic of the survey.
 
 It is using **Angular** as it's frontend, including **apollo** and **graphql** both on the front and the back. **NestJS** for the backend and **prisma** as a Node.js/TypeScript ORM, with an **sqlite** database.
 
-In this README I use questionnaire/survey/quiz interchangeably, but I really mean of an application that gives you possible questions and answers, and with each answer on a question you score points towards a final result.
+![Sorting hat use](docs/assets/sorting-hat-use.gif)
+
+---
+
+In this **README** I use questionnaire/survey/quiz interchangeably, but I really mean of an application that gives you possible questions and answers, and with each answer on a question you score points towards a final result.
 
 ![decision tree](docs/assets/decision-tree.png)
 _view in bigger resolution [here](https://raw.githubusercontent.com/lubeskih/sorting-hat/main/docs/assets/decision-tree.png)_
