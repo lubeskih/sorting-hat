@@ -13,6 +13,7 @@
     "start:dev": "nest start --watch",
     "build:prod": "cd ../frontend && ng build --prod --output-path ../api/dist/frontend && cd ../api && nest build",
     "prisma:generate": "node ./node_modules/.bin/prisma generate --schema=./prisma/schema.prisma",
+    "prisma:migrate": "node ./node_modules/.bin/prisma migrate dev",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",

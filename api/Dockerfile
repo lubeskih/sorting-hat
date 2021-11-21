@@ -16,8 +16,9 @@ RUN npm install --legacy-peer-deps
 # Get all the code needed to run the app
 COPY . /usr/src/app
 
-# generate prisma
+# generate and migrate prisma
 RUN yarn prisma:generate
+RUN yarn prisma:migrate
 
 # Expose the port the app runs in
 EXPOSE 3000
